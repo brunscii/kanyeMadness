@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Kanye Quotes</title>
+</head>
+<body>
+    <div id="quote-box">
+        <h1 id="quote"></h1>
+        <p>-Kanye</p>
+    </div>
+    <button id="next" type="button">Next random quote</button>
+    <script>
+        $(document).ready(()=>{new_quote()});
+        const new_quote = function(){
+            $.get("https://api.kanye.rest/", function(data,status){
+                $("#quote").text(data.quote);
+                randomColor();
+            });
+        };
+        $('#next').click(new_quote)
+    </script>
+</body>
+</html>
